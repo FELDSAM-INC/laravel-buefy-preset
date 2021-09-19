@@ -1,6 +1,6 @@
 <?php
 
-namespace PratyushPundir\LaravelBuefyPreset;
+namespace Feldsam\LaravelBuefyPreset;
 
 use Illuminate\Foundation\Console\Presets\Preset as LaravelPreset;
 use Illuminate\Support\Arr;
@@ -38,9 +38,8 @@ class Preset extends LaravelPreset
     public static function updatePackageArray($defaultPackages)
     {
         $additionalPackages = [
-            // "bulma" => "^0.7.2",
-            "buefy" => "^0.7.1",
-            "es6-promise" => "^4.2.5"
+            "buefy" => "^0.9.10",
+            "es6-promise" => "^4.2.8"
         ];
 
         $unwantedPackages = [

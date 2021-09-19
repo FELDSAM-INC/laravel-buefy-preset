@@ -24,7 +24,7 @@ This preset provides UI components that marry [Bulma](https://bulma.io/) and [Vu
 
  ### Getting Started
  - ````cd```` into your ***fresh*** Laravel project.
- - Run ````composer require pratyushpundir/laravel-buefy-preset````.
+ - Run ````composer require feldsam-inc/laravel-buefy-preset````.
  - Then run `````php artisan preset buefy`````. This will scaffold everything you need to replace Bootstrap with Bulma and set up your JS, SASS and Blade Views.
  - Install and compile your assets with ````yarn && yarn watch```` or ````npm install && npm run watch```` (but ```yarn``` is so much better!!!).
  - Visit ````routes/web.php```` and change the following piece of code:
