@@ -9,7 +9,7 @@ import 'es6-promise/auto'
 import LoginForm from './components/shared/LoginForm.vue'
 import RegisterForm from './components/shared/RegisterForm.vue'
 
-window.Vue = require('vue')
+import Vue from 'vue'
 Vue.use(Buefy, {
     defaultIconPack: 'fas'
 })
@@ -39,7 +39,7 @@ const app = new Vue({
         },
 
         openLoginModal() {
-            this.$modal.open({
+            this.$buefy.modal.open({
                 parent: this,
                 component: LoginForm,
                 hasModalCard: true
@@ -47,7 +47,7 @@ const app = new Vue({
         },
 
         openRegisterModal() {
-            this.$modal.open({
+            this.$buefy.modal.open({
                 parent: this,
                 component: RegisterForm,
                 hasModalCard: true

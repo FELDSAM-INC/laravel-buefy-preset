@@ -2,7 +2,7 @@
 
 namespace Feldsam\LaravelBuefyPreset;
 
-use Illuminate\Foundation\Console\Presets\Preset as LaravelPreset;
+use Laravel\Ui\Presets\Preset as LaravelPreset;
 use Illuminate\Support\Arr;
 use File;
 
@@ -25,6 +25,7 @@ class Preset extends LaravelPreset
             $command->info('You are ready. Build something awesome!');
         } catch (\Exception $exception) {
             $command->error('Whooops... Something went wrong!!!');
+            $command->error($exception->getMessage());
             return $exception;
         }
     }
@@ -39,7 +40,11 @@ class Preset extends LaravelPreset
     {
         $additionalPackages = [
             "buefy" => "^0.9.10",
-            "es6-promise" => "^4.2.8"
+            "es6-promise" => "^4.2.8",
+            "vue" => "^2.6.14",
+            "vue-loader" => "^15.9.8",
+            "vue-template-compiler" => "^2.6.14",
+            "sass-loader" => "^12.1.0",
         ];
 
         $unwantedPackages = [
@@ -75,7 +80,10 @@ class Preset extends LaravelPreset
         copy(__DIR__ . '/stubs/js/bootstrap.js', resource_path('js/bootstrap.js'));
         copy(__DIR__ . '/stubs/js/app.js', resource_path('js/app.js'));
 
-        if (!File::isDirectory(resource_path('js/components/shared'))) {
+        if (!File::isDirectory(resource_path('js/components'))) {
+            File::makeDirectory(resource_path('js/components'));
+            File::makeDirectory(resource_path('js/components/shared'));
+        } elseif (!File::isDirectory(resource_path('js/components/shared'))) {
             File::makeDirectory(resource_path('js/components/shared'));
         } else {
             File::cleanDirectory(resource_path('js/components/shared'));
@@ -91,6 +99,12 @@ class Preset extends LaravelPreset
      */
     public static function updateStyles()
     {
+        if (!File::isDirectory(resource_path('sass'))) {
+            File::makeDirectory(resource_path('sass'));
+        } else {
+            File::cleanDirectory(resource_path('sass'));
+        }
+
         copy(__DIR__ . '/stubs/sass/_variables.scss', resource_path('sass/_variables.scss'));
         copy(__DIR__ . '/stubs/sass/app.scss', resource_path('sass/app.scss'));
 

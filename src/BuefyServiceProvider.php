@@ -3,7 +3,7 @@
 namespace Feldsam\LaravelBuefyPreset;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Foundation\Console\PresetCommand;
+use Laravel\Ui\UiCommand;
 
 class BuefyServiceProvider extends ServiceProvider
 {
@@ -15,7 +15,7 @@ class BuefyServiceProvider extends ServiceProvider
     public function boot()
     {
         // Register the Buefy preset macro
-        PresetCommand::macro('buefy', function ($command) {
+        UiCommand::macro('buefy', function ($command) {
             Preset::install($command);
         });
     }

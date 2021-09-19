@@ -120,8 +120,8 @@
                 setTimeout(() => {
                     this.isLoading = false
                     this.$parent.close()
-                    
-                    this.$snackbar.open({
+
+                    this.$buefy.snackbar.open({
                         message: 'Fake signup successful!',
                         type: 'is-success',
                         position: 'is-top',
